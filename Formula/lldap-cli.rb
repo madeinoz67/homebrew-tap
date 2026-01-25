@@ -5,8 +5,8 @@
 class LldapCli < Formula
   desc "Lldap ts cli client"
   homepage "https://github.com/madeinoz67/lldap-cli"
-  url "https://github.com/madeinoz67/lldap-cli/archive/refs/tags/v1.2.1.tar.gz"
-  sha256 "df70143966a862e703652557ba1eea049c85d29598b20e16ef0fa81e0c28d981"
+  url "https://github.com/madeinoz67/lldap-cli/archive/refs/tags/v1.2.2.tar.gz"
+  sha256 "95419e032a1e68837424583b47c3423906f568828015cd31c2121b2046b0bfaf"
   license "MIT"
 
   on_macos do
