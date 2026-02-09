@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class MadeinozVoiceServer < Formula
+class VoiceServer < Formula
   desc "Local-first TTS voice server using MLX-audio with Kokoro-82M model"
-  homepage "https://github.com/madeinoz67/madeinoz-voice-server"
+  homepage "https://github.com/madeinoz67/voice-server"
   version "0.1.3"
   license "MIT"
 
@@ -21,7 +21,7 @@ class MadeinozVoiceServer < Formula
       #!/bin/bash
       # Wrapper script for voice-server
 
-      SERVER_DIR="#{HOMEBREW_PREFIX}/share/madeinoz-voice-server"
+      SERVER_DIR="#{HOMEBREW_PREFIX}/share/voice-server"
       export PORT="${PORT:-8888}"
 
       cd "$SERVER_DIR" || exit 1
@@ -71,7 +71,7 @@ class MadeinozVoiceServer < Formula
 
   def post_install
     # Install dependencies after installation
-    system "bun", "install", chdir: "#{HOMEBREW_PREFIX}/share/madeinoz-voice-server"
+    system "bun", "install", chdir: "#{HOMEBREW_PREFIX}/share/voice-server"
 
     # Check for MLX-audio backend
     mlx_check = `which mlx-audio 2>/dev/null`.strip
@@ -88,7 +88,7 @@ class MadeinozVoiceServer < Formula
     assert_predicate bin/"voice-server", :executable?
 
     # Test that the source directory was installed
-    assert_predicate HOMEBREW_PREFIX/"share/madeinoz-voice-server/src/ts/server.ts", :exist?
+    assert_predicate HOMEBREW_PREFIX/"share/voice-server/src/ts/server.ts", :exist?
   end
 
   service do

@@ -13,7 +13,7 @@ brew tap madeinoz67/tap
 | Formula | Description |
 |---------|-------------|
 | [lldap-cli](https://github.com/madeinoz67/lldap-cli) | Command-line interface for LLDAP server management |
-| [madeinoz-voice-server](https://github.com/madeinoz67/madeinoz-voice-server) | Local-first TTS voice server using Kokoro-82M and Qwen TTS models |
+| [voice-server](https://github.com/madeinoz67/madeinoz-voice-server) | Local-first TTS voice server using MLX-audio with Kokoro-82M model |
 
 ## Usage
 
@@ -21,22 +21,22 @@ brew tap madeinoz67/tap
 # Install lldap-cli
 brew install madeinoz67/tap/lldap-cli
 
-# Install madeinoz-voice-server
-brew install madeinoz67/tap/madeinoz-voice-server
+# Install voice-server
+brew install madeinoz67/tap/voice-server
 
 # Or after tapping
 brew tap madeinoz67/tap
-brew install madeinoz-voice-server
+brew install voice-server
 
 # Start as a service
-brew services start madeinoz67/tap/madeinoz-voice-server
+brew services start madeinoz67/tap/voice-server
 ```
 
 ## Updating
 
 ```bash
 brew update
-brew upgrade madeinoz67/tap/madeinoz-voice-server
+brew upgrade madeinoz67/tap/voice-server
 ```
 
 ## Issues
