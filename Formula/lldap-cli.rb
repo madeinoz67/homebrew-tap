@@ -1,13 +1,13 @@
 class LldapCli < Formula
   desc "Command-line interface for LLDAP server management"
   homepage "https://github.com/madeinoz67/lldap-cli"
-  version "1.2.4"
+  version "1.2.5"
   license "MIT"
 
   on_macos do
     on_arm do
       url "https://github.com/madeinoz67/lldap-cli/releases/download/v#{version}/lldap-cli-darwin-arm64.tar.gz"
-      sha256 "d72e06aef1f12b4a9ae3feff235625351d8d3651ed3f2112aef9870830514eee"
+      sha256 "a301a9606e8758ae33e16d82687fe83e34dbda55fd912ee835f85047e5899765"
 
       def install
         bin.install "lldap-cli-darwin-arm64" => "lldap-cli"
@@ -15,7 +15,7 @@ class LldapCli < Formula
     end
     on_intel do
       url "https://github.com/madeinoz67/lldap-cli/releases/download/v#{version}/lldap-cli-darwin-x64.tar.gz"
-      sha256 "b4a9eca0cb52e3823aea4d06132d8f1911061fd8d9a43e68a6561667b08e7e5c"
+      sha256 "f7a349357780aa1c412634fc5ef8942f20aadc7ae78102e8368373385736c235"
 
       def install
         bin.install "lldap-cli-darwin-x64" => "lldap-cli"
@@ -26,7 +26,7 @@ class LldapCli < Formula
   on_linux do
     on_arm do
       url "https://github.com/madeinoz67/lldap-cli/releases/download/v#{version}/lldap-cli-linux-arm64.tar.gz"
-      sha256 "b29c17c3ba08ef2f82de6f5ce4ba93259fb2ccdab754fa3184373a04cfd58b45"
+      sha256 "6172146fac017540a045db885c9b5068491a6538850fdd7beb1e2535fcf1d81c"
 
       def install
         bin.install "lldap-cli-linux-arm64" => "lldap-cli"
@@ -34,7 +34,7 @@ class LldapCli < Formula
     end
     on_intel do
       url "https://github.com/madeinoz67/lldap-cli/releases/download/v#{version}/lldap-cli-linux-x64.tar.gz"
-      sha256 "f550ef21689b4fdd6e9a5b42857a32f3f9578aaa8ab3049c20e96ed45356f7ba"
+      sha256 "8d8e839f771809cccea84f19ac9139d2d58c642a711930ea19c561321ce214d1"
 
       def install
         bin.install "lldap-cli-linux-x64" => "lldap-cli"
