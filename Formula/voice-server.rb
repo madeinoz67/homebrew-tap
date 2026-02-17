@@ -6,7 +6,7 @@ class VoiceServer < Formula
   version "0.1.11"
   license "MIT"
 
-  depends_on "bun"
+  depends_on "oven-sh/bun/bun"
   depends_on "ffmpeg"
 
   # Install from git head
