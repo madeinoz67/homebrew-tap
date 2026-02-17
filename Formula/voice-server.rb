@@ -13,15 +13,15 @@ class VoiceServer < Formula
   head "https://github.com/madeinoz67/madeinoz-voice-server.git", branch: "main"
 
   def install
-    # Install source files to share directory
-    share.install Dir["*"]
+    # Install source files to share/voice-server directory
+    (share/"voice-server").install Dir["*"]
 
     # Create wrapper script
     (bin/"voice-server").write <<~EOS
       #!/bin/bash
       # Wrapper script for voice-server
 
-      SERVER_DIR="#{HOMEBREW_PREFIX}/share/voice-server"
+      SERVER_DIR="#{share}/voice-server"
       export PORT="${PORT:-8888}"
 
       cd "$SERVER_DIR" || exit 1
@@ -71,7 +71,7 @@ class VoiceServer < Formula
 
   def post_install
     # Install dependencies after installation
-    system "bun", "install", chdir: "#{HOMEBREW_PREFIX}/share/voice-server"
+    system "bun", "install", chdir: share/"voice-server"
 
     # Check for MLX-audio backend
     mlx_check = `which mlx-audio 2>/dev/null`.strip
@@ -88,7 +88,7 @@ class VoiceServer < Formula
     assert_predicate bin/"voice-server", :executable?
 
     # Test that the source directory was installed
-    assert_predicate HOMEBREW_PREFIX/"share/voice-server/src/ts/server.ts", :exist?
+    assert_predicate share/"voice-server/src/ts/server.ts", :exist?
   end
 
   service do
