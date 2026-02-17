@@ -22,18 +22,20 @@ class VoiceServer < Formula
       # Wrapper script for voice-server
 
       SERVER_DIR="#{share}/voice-server"
+      BUN="#{Formula["oven-sh/bun/bun"].opt_bin}/bun"
       export PORT="${PORT:-8888}"
+      export PATH="#{HOMEBREW_PREFIX}/bin:#{HOMEBREW_PREFIX}/sbin:$PATH"
 
       cd "$SERVER_DIR" || exit 1
 
       # Install dependencies if needed
       if [ ! -d "node_modules" ]; then
         echo "Installing dependencies..."
-        bun install
+        "$BUN" install
       fi
 
       # Run the server
-      exec bun run src/ts/server.ts "$@"
+      exec "$BUN" run src/ts/server.ts "$@"
     EOS
 
     # Make wrapper executable
@@ -63,6 +65,8 @@ class VoiceServer < Formula
         <dict>
           <key>PORT</key>
           <string>8888</string>
+          <key>PATH</key>
+          <string>#{HOMEBREW_PREFIX}/bin:#{HOMEBREW_PREFIX}/sbin:/usr/bin:/bin:/usr/sbin:/sbin</string>
         </dict>
       </dict>
       </plist>
