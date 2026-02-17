@@ -9,6 +9,37 @@ class VoiceServer < Formula
   depends_on "oven-sh/bun/bun"
   depends_on "ffmpeg"
 
+  # MLX-audio is required but installed separately (Python package)
+  # Check via preflight before installation
+  def preflight
+    # Check for mlx_audio.tts.generate in common locations
+    mlx_paths = [
+      "#{HOMEBREW_PREFIX}/bin/mlx_audio.tts.generate",
+      "#{ENV["HOME"]}/.local/bin/mlx_audio.tts.generate",
+    ]
+
+    mlx_found = mlx_paths.any? { |path| File.executable?(path) }
+    mlx_found ||= system("which mlx_audio.tts.generate > /dev/null 2>&1")
+
+    unless mlx_found
+      opoo "MLX-audio CLI not found!"
+      opoo ""
+      opoo "voice-server requires mlx-audio for TTS functionality."
+      opoo "Install it with one of:"
+      opoo ""
+      opoo "  uv tool install mlx-audio"
+      opoo "  pipx install mlx-audio"
+      opoo ""
+      opoo "Then symlink to Homebrew path:"
+      opoo "  ln -sf ~/.local/bin/mlx_audio.tts.generate #{HOMEBREW_PREFIX}/bin/mlx_audio.tts.generate"
+      opoo ""
+      opoo "Or add ~/.local/bin to your PATH."
+
+      # Don't fail install, but warn prominently
+      # Service will fail to start without mlx-audio
+    end
+  end
+
   # Install from git head
   head "https://github.com/madeinoz67/madeinoz-voice-server.git", branch: "main"
 
@@ -24,9 +55,18 @@ class VoiceServer < Formula
       SERVER_DIR="#{share}/voice-server"
       BUN="#{Formula["oven-sh/bun/bun"].opt_bin}/bun"
       export PORT="${PORT:-8888}"
-      export PATH="#{HOMEBREW_PREFIX}/bin:#{HOMEBREW_PREFIX}/sbin:$PATH"
+      # Include common mlx-audio installation paths
+      export PATH="$HOME/.local/bin:#{HOMEBREW_PREFIX}/bin:#{HOMEBREW_PREFIX}/sbin:/usr/local/bin:$PATH"
 
       cd "$SERVER_DIR" || exit 1
+
+      # Check for mlx-audio before starting
+      if ! command -v mlx_audio.tts.generate &> /dev/null; then
+        echo "ERROR: mlx-audio CLI not found in PATH"
+        echo "Install with: uv tool install mlx-audio"
+        echo "Or: pipx install mlx-audio"
+        exit 1
+      fi
 
       # Install dependencies if needed
       if [ ! -d "node_modules" ]; then
@@ -78,11 +118,20 @@ class VoiceServer < Formula
     system "bun", "install", chdir: share/"voice-server"
 
     # Check for MLX-audio backend
-    mlx_check = `which mlx-audio 2>/dev/null`.strip
+    mlx_check = `which mlx_audio.tts.generate 2>/dev/null`.strip
     if mlx_check.empty?
-      ohai "MLX-audio backend not found. To install:"
+      ohai ""
+      ohai "⚠️  MLX-audio CLI not found!"
+      ohai ""
+      ohai "voice-server requires mlx-audio for TTS. Install it:"
+      ohai ""
       ohai "  uv tool install mlx-audio"
-      ohai "Or pipx install mlx-audio"
+      ohai "  # or"
+      ohai "  pipx install mlx-audio"
+      ohai ""
+      ohai "Then add to PATH or symlink:"
+      ohai "  ln -sf ~/.local/bin/mlx_audio.tts.generate #{HOMEBREW_PREFIX}/bin/"
+      ohai ""
     end
   end
 
