@@ -66,7 +66,7 @@ class VoiceServer < Formula
           <key>PORT</key>
           <string>8888</string>
           <key>PATH</key>
-          <string>#{HOMEBREW_PREFIX}/bin:#{HOMEBREW_PREFIX}/sbin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+          <string>/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
         </dict>
       </dict>
       </plist>
