@@ -12,12 +12,17 @@ brew tap madeinoz67/tap
 
 | Formula | Description |
 |---------|-------------|
+| [go-rag](https://github.com/madeinoz67/go-rag) | Single-binary local RAG database — bundled pure-Go embeddings, no Ollama required |
 | [lldap-cli](https://github.com/madeinoz67/lldap-cli) | Command-line interface for LLDAP server management |
 | [voice-server](https://github.com/madeinoz67/madeinoz-voice-server) | Local-first TTS voice server using MLX-audio with Kokoro-82M model |
 
 ## Usage
 
 ```bash
+# Install go-rag
+brew install madeinoz67/tap/go-rag
+go-rag init && go-rag add ./my-docs && go-rag query "how does X work?"
+
 # Install lldap-cli
 brew install madeinoz67/tap/lldap-cli
 
@@ -26,9 +31,9 @@ brew install madeinoz67/tap/voice-server
 
 # Or after tapping
 brew tap madeinoz67/tap
-brew install voice-server
+brew install go-rag
 
-# Start as a service
+# Start voice-server as a service
 brew services start madeinoz67/tap/voice-server
 ```
 
@@ -36,7 +41,7 @@ brew services start madeinoz67/tap/voice-server
 
 ```bash
 brew update
-brew upgrade madeinoz67/tap/voice-server
+brew upgrade madeinoz67/tap/go-rag
 ```
 
 ## Issues
