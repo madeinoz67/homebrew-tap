@@ -1,11 +1,12 @@
-# go-rag Homebrew formula — prebuilt static binaries from the v0.1.0 release
+# go-rag Homebrew formula — prebuilt static binaries from the GitHub release
 # (pure-Go, CGO_ENABLED=0). Four platforms: macOS/Linux x arm64/amd64.
 # Install: brew install madeinoz67/tap/go-rag
-# TODO(spec): add a LICENSE to go-rag and set the `license` stanza here.
+# The tap-bump job in go-rag's release.yml regenerates this file per release.
 class GoRag < Formula
   desc "Single-binary local RAG database with bundled pure-Go embeddings (no Ollama required)"
   homepage "https://github.com/madeinoz67/go-rag"
   version "0.1.0"
+  license "Apache-2.0"
 
   on_macos do
     on_arm do
