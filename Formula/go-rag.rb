@@ -1,32 +1,32 @@
 # go-rag Homebrew formula TEMPLATE (rendered by release.yml's `tap` job).
-# Placeholders 0.1.4, 80eec419c7b4c715a926c6af33c9382b7204d372b3e6dba4633b65c710a70601, b5e0a3165c5f0a641ac570b525eb0ccf1048f21b5faa40687fdcf21188cc7886, 127e6ff80ccf7877299c47cfeafbedc96a7cfdc4c2d0f4f379a72b287d81fcc0,
-# 66aa6242c38e8699db44851c6c9f821ed9b8adf56531c18a2d54acf512a73d62 are substituted per release. Do not edit the tap repo's copy
+# Placeholders 0.1.5, 5520c2f3c74c9e65ca34c964325742ce8b95121ced7e11dff07b53ae60779209, 6d13fb453d8861c08b9b7c13cec6d068b42b27f4c1d105e6e5791cd65fc67428, 865bfb0d1cf0d782d3b5c56acc3fe95bd779abfe10856ba46e483e87410e6faf,
+# 7c009df323592a82945a94d796ad16a0b205eb13138e22d2b1bf396a796d721e are substituted per release. Do not edit the tap repo's copy
 # by hand — it is regenerated on each tag.
 class GoRag < Formula
   desc "Single-binary local RAG database with bundled pure-Go embeddings (no Ollama required)"
   homepage "https://github.com/madeinoz67/go-rag"
-  version "0.1.4"
+  version "0.1.5"
   license "Apache-2.0"
 
   on_macos do
     on_arm do
       url "https://github.com/madeinoz67/go-rag/releases/download/v#{version}/go-rag-v#{version}-darwin-arm64.tar.gz"
-      sha256 "b5e0a3165c5f0a641ac570b525eb0ccf1048f21b5faa40687fdcf21188cc7886"
+      sha256 "6d13fb453d8861c08b9b7c13cec6d068b42b27f4c1d105e6e5791cd65fc67428"
     end
     on_intel do
       url "https://github.com/madeinoz67/go-rag/releases/download/v#{version}/go-rag-v#{version}-darwin-amd64.tar.gz"
-      sha256 "80eec419c7b4c715a926c6af33c9382b7204d372b3e6dba4633b65c710a70601"
+      sha256 "5520c2f3c74c9e65ca34c964325742ce8b95121ced7e11dff07b53ae60779209"
     end
   end
 
   on_linux do
     on_arm do
       url "https://github.com/madeinoz67/go-rag/releases/download/v#{version}/go-rag-v#{version}-linux-arm64.tar.gz"
-      sha256 "66aa6242c38e8699db44851c6c9f821ed9b8adf56531c18a2d54acf512a73d62"
+      sha256 "7c009df323592a82945a94d796ad16a0b205eb13138e22d2b1bf396a796d721e"
     end
     on_intel do
       url "https://github.com/madeinoz67/go-rag/releases/download/v#{version}/go-rag-v#{version}-linux-amd64.tar.gz"
-      sha256 "127e6ff80ccf7877299c47cfeafbedc96a7cfdc4c2d0f4f379a72b287d81fcc0"
+      sha256 "865bfb0d1cf0d782d3b5c56acc3fe95bd779abfe10856ba46e483e87410e6faf"
     end
   end
 
