@@ -12,6 +12,7 @@ brew tap madeinoz67/tap
 
 | Formula | Description |
 |---------|-------------|
+| [benchweave-sdk](https://github.com/madeinoz67/benchweave-sdk) | Offline authoring and conformance tooling for BenchWeave OTDP device plugins |
 | [go-rag](https://github.com/madeinoz67/go-rag) | Single-binary local RAG database — bundled pure-Go embeddings, no Ollama required |
 | [lldap-cli](https://github.com/madeinoz67/lldap-cli) | Command-line interface for LLDAP server management |
 | [voice-server](https://github.com/madeinoz67/madeinoz-voice-server) | Local-first TTS voice server using MLX-audio with Kokoro-82M model |
@@ -19,6 +20,9 @@ brew tap madeinoz67/tap
 ## Usage
 
 ```bash
+# Install benchweave-sdk
+brew install madeinoz67/tap/benchweave-sdk
+
 # Install go-rag
 brew install madeinoz67/tap/go-rag
 go-rag init && go-rag add ./my-docs && go-rag query "how does X work?"
