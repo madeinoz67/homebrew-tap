@@ -5,8 +5,8 @@
 class BenchweaveSdk < Formula
   desc "Offline authoring and conformance tools for BenchWeave OTDP device plugins"
   homepage "https://github.com/madeinoz67/benchweave-sdk"
-  url "https://files.pythonhosted.org/packages/50/a6/31913a0cc321191809709197736f15ad81cfcbca764bcba28218e4c207f4/benchweave_sdk-0.1.0.tar.gz"
-  sha256 "c102784445b592c4b2c01ce77bafb16a559357811bfd8a929ad7b01fb98f0239"
+  url "https://files.pythonhosted.org/packages/56/13/b6e7e35c26cc574fb87308b418e08b5101c87b0b90ae0de5b0172bc1db7c/benchweave_sdk-0.0.3.tar.gz"
+  sha256 "50a073863c76881e3bae5526ec94714d3af712f8b731f66bc3f6d36fb98cc79e"
   license "MIT"
 
   livecheck do
