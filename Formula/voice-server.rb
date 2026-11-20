@@ -3,7 +3,7 @@
 class VoiceServer < Formula
   desc "Local-first TTS voice server using MLX-audio with Kokoro-82M model"
   homepage "https://github.com/madeinoz67/voice-server"
-  version "0.1.11"
+  version "0.1.12"
   license "MIT"
 
   depends_on "oven-sh/bun/bun"
@@ -27,7 +27,7 @@ class VoiceServer < Formula
       opoo "voice-server requires mlx-audio for TTS functionality."
       opoo "Install it with one of:"
       opoo ""
-      opoo "  uv tool install mlx-audio"
+      opoo "  uv tool install --with 'misaki[en]' --with kokoro mlx-audio"
       opoo "  pipx install mlx-audio"
       opoo ""
       opoo "Then symlink to Homebrew path:"
@@ -63,7 +63,7 @@ class VoiceServer < Formula
       # Check for mlx-audio before starting
       if ! command -v mlx_audio.tts.generate &> /dev/null; then
         echo "ERROR: mlx-audio CLI not found in PATH"
-        echo "Install with: uv tool install mlx-audio"
+        echo "Install with: uv tool install --with 'misaki[en]' --with kokoro mlx-audio"
         echo "Or: pipx install mlx-audio"
         exit 1
       fi
@@ -125,7 +125,7 @@ class VoiceServer < Formula
       ohai ""
       ohai "voice-server requires mlx-audio for TTS. Install it:"
       ohai ""
-      ohai "  uv tool install mlx-audio"
+      ohai "  uv tool install --with 'misaki[en]' --with kokoro mlx-audio"
       ohai "  # or"
       ohai "  pipx install mlx-audio"
       ohai ""
@@ -145,7 +145,7 @@ class VoiceServer < Formula
   end
 
   service do
-    run [bin/"voice-server"]
+    run [opt_bin/"voice-server"]
     keep_alive true
     log_path var/"log/voice-server.log"
     error_log_path var/"log/voice-server.log"
