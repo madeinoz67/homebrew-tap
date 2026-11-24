@@ -105,6 +105,10 @@ class VoiceServer < Formula
         <dict>
           <key>PORT</key>
           <string>8888</string>
+          <key>DEFAULT_VOLUME</key>
+          <string>1.5</string>
+          <key>ENABLE_MACOS_NOTIFICATIONS</key>
+          <string>false</string>
           <key>PATH</key>
           <string>/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
         </dict>
@@ -149,6 +153,6 @@ class VoiceServer < Formula
     keep_alive true
     log_path var/"log/voice-server.log"
     error_log_path var/"log/voice-server.log"
-    environment_variables PORT: "8888"
+    environment_variables PORT: "8888", DEFAULT_VOLUME: "1.5", ENABLE_MACOS_NOTIFICATIONS: "false"
   end
 end
